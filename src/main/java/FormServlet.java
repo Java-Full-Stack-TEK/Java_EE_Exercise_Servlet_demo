@@ -36,10 +36,10 @@ public class FormServlet extends HttpServlet{
         Enumeration names = request.getParameterNames();
         out.println("<p>Request Parameter Names are: ");
         if (names.hasMoreElements()) {
-            out.print(htmlFilter(names.nextElement().toString()));
+            out.print(names.nextElement().toString());
         }
         do {
-            out.print(", " + htmlFilter(names.nextElement().toString()));
+            out.print(", " + names.nextElement().toString());
         } while (names.hasMoreElements());
         out.println(".</p>");
 
@@ -84,10 +84,10 @@ public class FormServlet extends HttpServlet{
         Enumeration names = request.getParameterNames();
         out.println("<p>Request Parameter Names are: ");
         if (names.hasMoreElements()) {
-            out.print(htmlFilter(names.nextElement().toString()));
+            out.print(names.nextElement().toString());
         }
         do {
-            out.print(", " + htmlFilter(names.nextElement().toString()));
+            out.print(", " + names.nextElement().toString());
         } while (names.hasMoreElements());
         out.println(".</p>");
         // method adding the same html string as in doGet
@@ -116,22 +116,22 @@ public class FormServlet extends HttpServlet{
 
     // Filter the string for special HTML characters to prevent
     // command injection attack
-    private static String htmlFilter(String message) {
-        if (message == null) return null;
-        int len = message.length();
-        StringBuffer result = new StringBuffer(len + 20);
-        char aChar;
-
-        for (int i = 0; i < len; ++i) {
-            aChar = message.charAt(i);
-            switch (aChar) {
-                case '<': result.append("&lt;"); break;
-                case '>': result.append("&gt;"); break;
-                case '&': result.append("&amp;"); break;
-                case '"': result.append("&quot;"); break;
-                default: result.append(aChar);
-            }
-        }
-        return (result.toString());
-    }
+//    private static String htmlFilter(String message) {
+//        if (message == null) return null;
+//        int len = message.length();
+//        StringBuffer result = new StringBuffer(len + 20);
+//        char aChar;
+//
+//        for (int i = 0; i < len; ++i) {
+//            aChar = message.charAt(i);
+//            switch (aChar) {
+//                case '<': result.append("&lt;"); break;
+//                case '>': result.append("&gt;"); break;
+//                case '&': result.append("&amp;"); break;
+//                case '"': result.append("&quot;"); break;
+//                default: result.append(aChar);
+//            }
+//        }
+//        return (result.toString());
+//    }
 }
