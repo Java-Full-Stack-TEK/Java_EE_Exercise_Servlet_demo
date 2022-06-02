@@ -8,68 +8,68 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Form Test</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-            border: none;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 1em;
-        }
+<!--    <style>-->
+<!--        * {-->
+<!--            box-sizing: border-box;-->
+<!--            padding: 0;-->
+<!--            margin: 0;-->
+<!--            border: none;-->
+<!--            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;-->
+<!--            font-size: 1em;-->
+<!--        }-->
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgb(8, 60, 80);
-        }
+<!--        body {-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            width: 100vw;-->
+<!--            height: 100vh;-->
+<!--            background-color: rgb(8, 60, 80);-->
+<!--        }-->
 
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+<!--        form {-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--            align-items: center;-->
+<!--        }-->
 
-        .input-container {
-            display: flex;
-            justify-content: space-between;
-            height: 3rem;
-            min-width: 300px;
-            margin: 10px;
-            background-color: white;
-        }
+<!--        .input-container {-->
+<!--            display: flex;-->
+<!--            justify-content: space-between;-->
+<!--            height: 3rem;-->
+<!--            min-width: 300px;-->
+<!--            margin: 10px;-->
+<!--            background-color: white;-->
+<!--        }-->
 
-        .input-container input,
-        .input-container label {
-            height: 100%;
-            padding: 10px;
-        }
+<!--        .input-container input,-->
+<!--        .input-container label {-->
+<!--            height: 100%;-->
+<!--            padding: 10px;-->
+<!--        }-->
 
-        input {
-            background-color: white;
-            flex: 2;
-            width: 0%;
-        }
+<!--        input {-->
+<!--            background-color: white;-->
+<!--            flex: 2;-->
+<!--            width: 0%;-->
+<!--        }-->
 
-        label {
-            text-align: center;
-            color: rgb(254, 254, 254);
-            background-color: rgb(6, 84, 156);
-            flex: 1;
-        }
+<!--        label {-->
+<!--            text-align: center;-->
+<!--            color: rgb(254, 254, 254);-->
+<!--            background-color: rgb(6, 84, 156);-->
+<!--            flex: 1;-->
+<!--        }-->
 
-        button {
-            height: 2rem;
-            width: 80%;
-            border-radius: 10px;
-            margin: 10px;
-        }
-    </style>
+<!--        button {-->
+<!--            height: 2rem;-->
+<!--            width: 80%;-->
+<!--            border-radius: 10px;-->
+<!--            margin: 10px;-->
+<!--        }-->
+<!--    </style>-->
 
-</head>
+<!--</head>-->
 
 <body>
 <form action="form" method="GET">
@@ -79,11 +79,20 @@
     </div>
     <div class="input-container">
         <label for="lname">Last name:</label><br>
-        <input type="text" placeholder="Smith" id="lname" name="lname">
+        <input type="text" placeholder="Smith" id="lname" name="lname" required>
     </div>
     <div class="input-container">
         <label for="email">Email:</label><br>
-        <input type="email" placeholder="js@whatever.gov" id="email" name="email">
+        <input type="email" placeholder="js@whatever.gov" id="email" name="email" required>
+    </div>
+    <div class="input-container">
+        <label for="language">Check Option</label>
+        <fieldset>
+            <legend id="language">Languages</legend>
+            <input type="checkbox" name="language" value="java" checked />Java
+            <input type="checkbox" name="language" value="c" />C/C++
+            <input type="checkbox" name="language" value="cs" />C#
+        </fieldset>
     </div>
 
     <button type="submit">SUMBIT</button>

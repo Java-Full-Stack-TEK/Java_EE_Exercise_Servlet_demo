@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Enumeration;
 
 @Log
@@ -20,6 +21,8 @@ public class FormServlet extends HttpServlet{
         String firstName = request.getParameter("fname");
         String lastName = request.getParameter("lname");
         String email = request.getParameter("email");
+        String[] languages = request.getParameterValues("language");
+        String langStr = Arrays.toString(languages);
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -50,6 +53,8 @@ public class FormServlet extends HttpServlet{
                 + lastName + "\n" +
                 "  <li><b>Email</b>: "
                 + email + "\n" +
+                        "  <li><b>Languages</b>: "
+                        + langStr + "\n" +
                 "</ul>\n" +
                 "</body>" +
                 "<a href=\"form-get.html\">Fill out form again</a>" +
