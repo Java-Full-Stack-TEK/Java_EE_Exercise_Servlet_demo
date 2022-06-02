@@ -40,6 +40,7 @@ public class FormServlet extends HttpServlet{
                 + email + "\n" +
                 "</ul>\n" +
                 "</body>" +
+                "<a href=\"form_get.html\">Fill out form again</a>" +
                 "</html>"
         );
 
