@@ -48,7 +48,7 @@ public class FormServlet extends HttpServlet{
 //        request.getRequestDispatcher("/form_get.html")
 //                .include(request, response);
         // Then we can add things
-        out.println("<h3>And some more HTML added by the method called by a GET request to /form</h3>");
+//        out.println("<h3>And some more HTML added by the method called by a GET request to /form</h3>");
         out.close();
     }
 
