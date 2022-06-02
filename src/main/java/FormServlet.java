@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 @Log
 @WebServlet("/form")
@@ -31,6 +32,17 @@ public class FormServlet extends HttpServlet{
                 "<head><title>" + title + "</title></head>\n" +
                 "<body bgcolor = \"#f0f0f0\">\n" +
                 "<h1 align = \"center\">" + title + "</h1>\n");// +
+        // Get all the names of request parameters
+        Enumeration names = request.getParameterNames();
+        out.println("<p>Request Parameter Names are: ");
+        if (names.hasMoreElements()) {
+            out.print(htmlFilter(names.nextElement().toString()));
+        }
+        do {
+            out.print(", " + htmlFilter(names.nextElement().toString()));
+        } while (names.hasMoreElements());
+        out.println(".</p>");
+
         out.println(
                 "<ul>\n" +
                         "  <li><b>First Name</b>: "
@@ -43,7 +55,7 @@ public class FormServlet extends HttpServlet{
         );
         // link back to the form
         out.println(
-                "<a href=\"form_get.html\">Fill out form again</a>" +
+                "<a href=\"form-get.html\">Fill out form again</a>" +
                         "</body>" +
                         "</html>"
         );
@@ -68,12 +80,21 @@ public class FormServlet extends HttpServlet{
                 "<head><title>" + title + "</title></head>\n" +
                 "<body bgcolor = \"#f0f0f0\">\n" +
                 "<h1 align = \"center\">" + title + "</h1>\n");// +
-
+        // Get all the names of request parameters
+        Enumeration names = request.getParameterNames();
+        out.println("<p>Request Parameter Names are: ");
+        if (names.hasMoreElements()) {
+            out.print(htmlFilter(names.nextElement().toString()));
+        }
+        do {
+            out.print(", " + htmlFilter(names.nextElement().toString()));
+        } while (names.hasMoreElements());
+        out.println(".</p>");
         // method adding the same html string as in doGet
         insertFormData(out, firstName, lastName, email);
 
         out.println(
-                "<a href=\"form_post.html\">Fill out form again</a>" +
+                "<a href=\"form-post.html\">Fill out form again</a>" +
                 "</body>" +
                 "</html>"
         );
@@ -91,5 +112,26 @@ public class FormServlet extends HttpServlet{
                 + email + "\n" +
                 "</ul>\n"
         );
+    }
+
+    // Filter the string for special HTML characters to prevent
+    // command injection attack
+    private static String htmlFilter(String message) {
+        if (message == null) return null;
+        int len = message.length();
+        StringBuffer result = new StringBuffer(len + 20);
+        char aChar;
+
+        for (int i = 0; i < len; ++i) {
+            aChar = message.charAt(i);
+            switch (aChar) {
+                case '<': result.append("&lt;"); break;
+                case '>': result.append("&gt;"); break;
+                case '&': result.append("&amp;"); break;
+                case '"': result.append("&quot;"); break;
+                default: result.append(aChar);
+            }
+        }
+        return (result.toString());
     }
 }
